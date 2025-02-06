@@ -1,0 +1,99 @@
+<h1>{{ textoBoton }} propietario</h1>
+<div class="container container-fluid">
+  <form #ownerForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Nombre:</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="owner.firstName"
+        name="firstName"
+        #firstName="ngModel"
+      />
+      <div
+        [hidden]="firstName.valid || firstName.pristine"
+        class="alert alert-danger"
+      >
+        El nombre es requerido
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Apellidos:</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="owner.lastName"
+        name="lastName"
+        #lastName="ngModel"
+      />
+      <div
+        [hidden]="lastName.valid || lastName.pristine"
+        class="alert alert-danger"
+      >
+        Los apellidos son requeridos
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Dirección:</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="owner.address"
+        name="address"
+        #address="ngModel"
+      />
+      <div
+        [hidden]="address.valid || address.pristine"
+        class="alert alert-danger"
+      >
+        La dirección es requerida
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Ciudad:</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="owner.city"
+        name="city"
+        #city="ngModel"
+      />
+      <div [hidden]="city.valid || city.pristine" class="alert alert-danger">
+        La ciudad es requerida
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Teléfono:</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="owner.telephone"
+        name="telephone"
+        #telephone="ngModel"
+      />
+      <div
+        [hidden]="telephone.valid || telephone.pristine"
+        class="alert alert-danger"
+      >
+        El teléfono es requerido
+      </div>
+    </div>
+    <div class="row">
+      <button
+        type="submit"
+        class="btn btn-primary col-2"
+        [disabled]="!ownerForm.valid"
+      >
+        {{ textoBoton }}
+      </button>
+      <button type="button" class="btn btn-primary col-2" (click)="irAtras()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
