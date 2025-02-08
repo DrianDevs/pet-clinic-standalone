@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { OwnersComponent } from './components/owners/owners.component';
 import { FormOwnerComponent } from './components/form-owner/form-owner.component';
 import { DetailOwnerComponent } from './components/detail-owner/detail-owner.component';
+import { PetAddComponent } from './components/pet-add/pet-add.component';
 
 export const routes: Routes = [
   {
@@ -19,5 +20,9 @@ export const routes: Routes = [
   {
     path: 'owners-add/:id',
     component: FormOwnerComponent,
+  },
+  {
+    path: 'pet-add',
+    component: PetAddComponent,
   },
 ];

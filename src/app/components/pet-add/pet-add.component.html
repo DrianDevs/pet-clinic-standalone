@@ -1,1 +1,68 @@
-<p>pet-add works!</p>
+<h1>{{ textoBoton }} mascota</h1>
+<div class="container container-fluid">
+  <form #petForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Nombre:</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="pet.name"
+        name="name"
+        #name="ngModel"
+      />
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Introduce un nombre válido
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Fecha de cumpleaños:</label>
+      <input
+        type="date"
+        class="form-control"
+        required
+        [(ngModel)]="pet.birthDate"
+        name="birthDate"
+        #birthDate="ngModel"
+      />
+      <div
+        [hidden]="birthDate.valid || birthDate.pristine"
+        class="alert alert-danger"
+      >
+        Introduce una fecha de cumpleaños válida
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Tipo de mascota:</label>
+      <select
+        class="form-control"
+        required
+        [(ngModel)]="pet.type"
+        name="type"
+        #type="ngModel"
+      >
+        <option value="" disabled selected>Selecciona un tipo</option>
+        @for (type of this.tipos; track $index){
+        <option value="{{ type.id }}">
+          {{ type.name.charAt(0).toUpperCase() + type.name.slice(1) }}
+        </option>
+        }
+      </select>
+      <div [hidden]="type.valid || type.pristine" class="alert alert-danger">
+        El tipo de mascota es requerido
+      </div>
+    </div>
+    <div class="row">
+      <button
+        type="submit"
+        class="btn btn-primary col-2"
+        [disabled]="!petForm.valid"
+      >
+        {{ textoBoton }}
+      </button>
+      <button type="button" class="btn btn-primary col-2" (click)="irAtras()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

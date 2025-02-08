@@ -1,4 +1,4 @@
-export interface PetType {
+export interface Speciality {
   id: number;
   name: string;
 }

@@ -49,4 +49,14 @@ export class DetailOwnerComponent {
   editarOwner(ownerId: number) {
     this.ruta.navigate(['owners-add', ownerId]);
   }
+
+  irAPetAdd() {
+    // this.ruta.navigate(['pet-add', this.owner.id, -1]);
+    this.ruta.navigate(['pet-add'], {
+      state: {
+        owner: this.owner,
+        id: -1,
+      },
+    });
+  }
 }

@@ -21,7 +21,6 @@ export class PetListComponent {
     if (idOwner) {
       this.peticion.listarPets(idOwner).subscribe({
         next: (data) => {
-          console.log('data', data);
           this.pets = data;
           console.log('this.pets', this.pets);
         },
@@ -35,4 +34,6 @@ export class PetListComponent {
 
     console.log('idOwner: ' + idOwner);
   }
+
+  consultarTipoPet(typeId: number) {}
 }
