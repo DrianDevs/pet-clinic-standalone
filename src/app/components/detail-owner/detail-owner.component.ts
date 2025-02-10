@@ -51,12 +51,6 @@ export class DetailOwnerComponent {
   }
 
   irAPetAdd() {
-    // this.ruta.navigate(['pet-add', this.owner.id, -1]);
-    this.ruta.navigate(['pet-add'], {
-      state: {
-        owner: this.owner,
-        id: -1,
-      },
-    });
+    this.ruta.navigate(['pet-add', this.owner.id, -1]);
   }
 }

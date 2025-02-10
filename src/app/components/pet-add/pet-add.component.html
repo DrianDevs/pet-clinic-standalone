@@ -37,7 +37,7 @@
       <select
         class="form-control"
         required
-        [(ngModel)]="pet.type"
+        [(ngModel)]="pet.type.id"
         name="type"
         #type="ngModel"
       >
@@ -52,15 +52,11 @@
         El tipo de mascota es requerido
       </div>
     </div>
-    <div class="row">
-      <button
-        type="submit"
-        class="btn btn-primary col-2"
-        [disabled]="!petForm.valid"
-      >
+    <div class="d-flex justify-content-start gap-2">
+      <button type="submit" class="btn btn-primary" [disabled]="!petForm.valid">
         {{ textoBoton }}
       </button>
-      <button type="button" class="btn btn-primary col-2" (click)="irAtras()">
+      <button type="button" class="btn btn-secondary" (click)="irAtras()">
         Cancelar
       </button>
     </div>

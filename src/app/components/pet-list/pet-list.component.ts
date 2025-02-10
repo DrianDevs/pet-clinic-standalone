@@ -11,15 +11,17 @@ import { Pet } from '../../models/pet';
 })
 export class PetListComponent {
   public pets: Pet[] = [];
+  public idOwner: number;
+
   constructor(
     private peticion: PetService,
     private ruta: Router,
     private route: ActivatedRoute
   ) {
-    let idOwner = this.route.snapshot.params['id'];
+    this.idOwner = this.route.snapshot.params['id'];
 
-    if (idOwner) {
-      this.peticion.listarPets(idOwner).subscribe({
+    if (this.idOwner) {
+      this.peticion.listarPets(this.idOwner).subscribe({
         next: (data) => {
           this.pets = data;
           console.log('this.pets', this.pets);
@@ -32,8 +34,10 @@ export class PetListComponent {
       console.log('No se ha recibido nada como parámetro');
     }
 
-    console.log('idOwner: ' + idOwner);
+    console.log('idOwner: ' + this.idOwner);
   }
 
-  consultarTipoPet(typeId: number) {}
+  irAPetEdit(idPet: number) {
+    this.ruta.navigate(['pet-add', this.idOwner, idPet]);
+  }
 }

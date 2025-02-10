@@ -13,7 +13,7 @@ import { Owner } from '../../models/owner';
   styleUrl: './pet-add.component.css',
 })
 export class PetAddComponent {
-  public textoBoton: string;
+  public textoBoton: string = 'Añadir';
   public pet: Pet = <Pet>{};
   public tipos: PetType[] = [];
 
@@ -21,37 +21,35 @@ export class PetAddComponent {
     private peticion: PetService,
     private ruta: Router,
     private route: ActivatedRoute
-  ) {
-    this.textoBoton = 'Añadir';
-    this.pet = {
-      id: -1,
-      name: '',
-      birthDate: '',
-      type: {
-        id: -1,
-        name: '',
-      },
-      //Falta llenar los datos del owner
-      owner: <Owner>{},
-      visits: [],
-    };
-  }
+  ) {}
 
   ngOnInit() {
-    const state = this.ruta.getCurrentNavigation()?.extras?.state;
-    if (state) {
-      this.pet.owner = state['owner'];
-      this.pet.id = state['id'];
-      console.log(this.pet.owner);
+    this.pet = {
+      id: this.route.snapshot.params['id'],
+      name: '',
+      birthDate: '',
+      type: <PetType>{},
+      owner: <Owner>{
+        id: this.route.snapshot.params['ownerId'],
+      },
+      visits: [],
+    };
+
+    if (this.route.snapshot.params['id'] == -1) {
+      this.textoBoton = 'Añadir';
+    } else {
+      this.textoBoton = 'Modificar';
+
+      this.pet.id = this.route.snapshot.params['id'];
+      this.obtenerDatosPet();
     }
+
     this.obtenerTipos();
   }
 
   onSubmit() {
-    const petId = this.route.snapshot.params['id'];
-    if (petId == -1) {
-      this.textoBoton = 'Añadir';
-
+    if (this.pet.id == -1) {
+      console.log(this.pet);
       this.peticion.anadirPet(this.pet).subscribe({
         next: (data) => {
           this.ruta.navigate(['/owner-details', this.pet.owner.id]);
@@ -61,8 +59,6 @@ export class PetAddComponent {
         },
       });
     } else {
-      this.textoBoton = 'Modificar';
-
       // Añadir aqui el modificar pet
     }
   }
@@ -80,5 +76,21 @@ export class PetAddComponent {
 
   irAtras() {
     this.ruta.navigate(['/owner-details', this.pet.owner.id]);
+  }
+
+  obtenerDatosPet() {
+    this.peticion.selPetId(this.pet.id).subscribe({
+      next: (data) => {
+        console.log('data', data);
+        this.pet.name = data.name;
+        this.pet.birthDate = data.birthDate;
+        this.pet.type = data.type;
+        this.pet.owner = data.owner;
+        console.log('this.pet', this.pet);
+      },
+      error: (error) => {
+        console.error('Error al obtener la mascota', error);
+      },
+    });
   }
 }

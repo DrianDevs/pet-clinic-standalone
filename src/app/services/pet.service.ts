@@ -33,4 +33,12 @@ export class PetService {
     });
     return this.http.post<PetType[]>(this.url, body);
   }
+
+  selPetId(idPet: number) {
+    let body = JSON.stringify({
+      accion: 'ObtenerPetId',
+      id: idPet,
+    });
+    return this.http.post<any>(this.url, body);
+  }
 }

@@ -22,7 +22,7 @@ export const routes: Routes = [
     component: FormOwnerComponent,
   },
   {
-    path: 'pet-add',
+    path: 'pet-add/:ownerId/:id',
     component: PetAddComponent,
   },
 ];

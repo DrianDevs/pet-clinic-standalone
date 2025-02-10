@@ -1,32 +1,34 @@
 <h1>Detalles del Owner : {{ owner.firstName }} {{ owner.lastName }}</h1>
-<table class="table table-dark table-striped">
-  <tbody>
-    <tr>
-      <th scope="row">ID</th>
-      <td>{{ owner.id }}</td>
-    </tr>
-    <tr>
-      <th scope="row">Nombre</th>
-      <td>{{ owner.firstName }}</td>
-    </tr>
-    <tr>
-      <th scope="row">Apellidos</th>
-      <td>{{ owner.lastName }}</td>
-    </tr>
-    <tr>
-      <th scope="row">Dirección</th>
-      <td>{{ owner.address }}</td>
-    </tr>
-    <tr>
-      <th scope="row">Ciudad</th>
-      <td>{{ owner.city }}</td>
-    </tr>
-    <tr>
-      <th scope="row">Teléfono</th>
-      <td>{{ owner.telephone }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="rounded overflow-hidden shadow">
+  <table class="table table-dark table-striped">
+    <tbody>
+      <tr>
+        <th scope="row">ID</th>
+        <td>{{ owner.id }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Nombre</th>
+        <td>{{ owner.firstName }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Apellidos</th>
+        <td>{{ owner.lastName }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Dirección</th>
+        <td>{{ owner.address }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Ciudad</th>
+        <td>{{ owner.city }}</td>
+      </tr>
+      <tr>
+        <th scope="row">Teléfono</th>
+        <td>{{ owner.telephone }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <div class="form-group">
   <button type="button" class="btn btn-primary col-1" (click)="irAtras()">
