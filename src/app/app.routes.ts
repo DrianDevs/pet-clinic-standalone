@@ -3,6 +3,7 @@ import { OwnersComponent } from './components/owners/owners.component';
 import { FormOwnerComponent } from './components/form-owner/form-owner.component';
 import { DetailOwnerComponent } from './components/detail-owner/detail-owner.component';
 import { PetAddComponent } from './components/pet-add/pet-add.component';
+import { PettypeListComponent } from './components/pettype-list/pettype-list.component';
 
 export const routes: Routes = [
   {
@@ -24,5 +25,9 @@ export const routes: Routes = [
   {
     path: 'pet-add/:ownerId/:id',
     component: PetAddComponent,
+  },
+  {
+    path: 'pettypes',
+    component: PettypeListComponent,
   },
 ];

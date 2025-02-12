@@ -45,7 +45,7 @@ export class AppComponent {
       },
       {
         label: 'Pet Types',
-        //routerLink: '/pettypes',
+        routerLink: '/pettypes',
       },
       {
         label: 'Specialities',

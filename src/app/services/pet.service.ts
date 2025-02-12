@@ -41,4 +41,11 @@ export class PetService {
     });
     return this.http.post<any>(this.url, body);
   }
+
+  listarPettypes() {
+    let body = JSON.stringify({
+      accion: 'ListarPettypes',
+    });
+    return this.http.post<PetType[]>(this.url, body);
+  }
 }

@@ -1,1 +1,46 @@
-<p>pettype-add works!</p>
+<h1>{{ textoBoton }} tipo de mascota</h1>
+<div class="container container-fluid">
+  <form #petTypeForm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- Campo ID (solo lectura) -->
+    <div class="mb-3">
+      <label>ID:</label>
+      <input
+        type="text"
+        class="form-control"
+        [ngModel]="petType.id"
+        name="id"
+        readonly
+      />
+    </div>
+
+    <!-- Campo Nombre -->
+    <div class="mb-3">
+      <label>Nombre:</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="petType.name"
+        name="name"
+        #name="ngModel"
+      />
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Introduce un nombre válido
+      </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="d-flex justify-content-start gap-2">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!petTypeForm.valid"
+      >
+        {{ textoBoton }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="irAtras()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
