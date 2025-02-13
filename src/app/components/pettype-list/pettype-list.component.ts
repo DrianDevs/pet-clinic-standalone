@@ -12,12 +12,15 @@ import { PettypeAddComponent } from '../pettype-add/pettype-add.component';
 })
 export class PettypeListComponent {
   public pettypes: PetType[] = [];
+  public mostrarFormulario: boolean;
 
   constructor(
     private peticion: PetService,
     private ruta: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.mostrarFormulario = false;
+  }
 
   ngOnInit() {
     this.obtenerPetTypes();
@@ -27,11 +30,28 @@ export class PettypeListComponent {
     this.peticion.listarPettypes().subscribe({
       next: (data) => {
         this.pettypes = data;
-        console.log('data', data);
       },
       error: (error) => {
         console.error('Error al cargar los tipos de mascotas', error);
       },
     });
+  }
+
+  actualizarLista(nuevoPettype: PetType) {
+    this.pettypes.push(nuevoPettype);
+  }
+
+  borrarPettype(idPettype: number) {
+    if (confirm('¿Estás seguro de que quieres borrar este Tipo de Mascota?')) {
+      this.peticion.borrarPettype(idPettype).subscribe((data: any) => {
+        this.obtenerPetTypes();
+      });
+    }
+  }
+
+  colocarFormulario(pettypeId: number) {
+    this.mostrarFormulario = !this.mostrarFormulario;
+    if (pettypeId == -1) {
+    }
   }
 }

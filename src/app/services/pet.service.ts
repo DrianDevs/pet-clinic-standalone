@@ -48,4 +48,20 @@ export class PetService {
     });
     return this.http.post<PetType[]>(this.url, body);
   }
+
+  anadirPettype(petType: PetType) {
+    let body = JSON.stringify({
+      accion: 'AnadePettype',
+      pettype: petType,
+    });
+    return this.http.post<PetType>(this.url, body);
+  }
+
+  borrarPettype(idPettype: number) {
+    let body = JSON.stringify({
+      accion: 'BorraPettype',
+      id: idPettype,
+    });
+    return this.http.post<PetType[]>(this.url, body);
+  }
 }

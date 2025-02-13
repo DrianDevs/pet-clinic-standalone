@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PetType } from '../../models/pettype';
 import { PetService } from '../../services/pet.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 export class PettypeAddComponent {
   public textoBoton: string = 'Añadir';
   public petType: PetType = <PetType>{};
+  @Output() nuevoPettype = new EventEmitter();
 
   constructor(
     private peticion: PetService,
@@ -25,9 +26,16 @@ export class PettypeAddComponent {
     };
   }
 
-  onSubmit() {}
-
-  irAtras() {
-    //this.ruta.navigate(['../'], { relativeTo: this.route });
+  onSubmit() {
+    this.peticion.anadirPettype(this.petType).subscribe({
+      next: (data) => {
+        this.nuevoPettype.emit(data);
+      },
+      error: (error) => {
+        console.error('Error al modificar el propietario', error);
+      },
+    });
   }
+
+  cancelar() {}
 }
