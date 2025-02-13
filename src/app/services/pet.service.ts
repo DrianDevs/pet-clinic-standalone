@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Pet } from '../models/pet';
 import { PetType } from '../models/pettype';
+import { Visit } from '../models/visit';
 
 @Injectable({
   providedIn: 'root',

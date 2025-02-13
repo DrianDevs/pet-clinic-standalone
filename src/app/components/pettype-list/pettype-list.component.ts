@@ -39,6 +39,7 @@ export class PettypeListComponent {
 
   actualizarLista(nuevoPettype: PetType) {
     this.pettypes.push(nuevoPettype);
+    this.toggleFormulario();
   }
 
   borrarPettype(idPettype: number) {
@@ -49,9 +50,7 @@ export class PettypeListComponent {
     }
   }
 
-  colocarFormulario(pettypeId: number) {
+  toggleFormulario() {
     this.mostrarFormulario = !this.mostrarFormulario;
-    if (pettypeId == -1) {
-    }
   }
 }

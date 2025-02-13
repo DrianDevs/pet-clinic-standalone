@@ -24,7 +24,6 @@ export class PetListComponent {
       this.peticion.listarPets(this.idOwner).subscribe({
         next: (data) => {
           this.pets = data;
-          console.log('this.pets', this.pets);
         },
         error: (error) => {
           console.error('Error al cargar las mascotas', error);
@@ -33,8 +32,6 @@ export class PetListComponent {
     } else {
       console.log('No se ha recibido nada como parámetro');
     }
-
-    console.log('idOwner: ' + this.idOwner);
   }
 
   irAPetEdit(idPet: number) {
