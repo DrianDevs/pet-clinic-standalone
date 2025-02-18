@@ -2,6 +2,18 @@
 <div class="container container-fluid">
   <form #petForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
+      <label>Propietario:</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="this.ownerName"
+        name="ownerName"
+        #ownerName="ngModel"
+        disabled
+      />
+    </div>
+    <div class="mb-3">
       <label>Nombre:</label>
       <input
         type="text"
