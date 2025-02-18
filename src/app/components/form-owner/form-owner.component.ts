@@ -73,6 +73,7 @@ export class FormOwnerComponent {
   }
 
   irAtras() {
-    this.ruta.navigate(['/']);
+    if (this.owner.id == -1) this.ruta.navigate(['/']);
+    else this.ruta.navigate(['/owner-details', this.owner.id]);
   }
 }
