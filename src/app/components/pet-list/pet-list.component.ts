@@ -1,40 +1,15 @@
-import { Component } from '@angular/core';
-import { PetService } from '../../services/pet.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Pet } from '../../models/pet';
+import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-pet-list',
-  imports: [],
+  imports: [DatePipe, RouterLink],
   templateUrl: './pet-list.component.html',
   styleUrl: './pet-list.component.css',
 })
 export class PetListComponent {
-  public pets: Pet[] = [];
-  public idOwner: number;
+  @Input() pet: any = {};
 
-  constructor(
-    private peticion: PetService,
-    private ruta: Router,
-    private route: ActivatedRoute
-  ) {
-    this.idOwner = this.route.snapshot.params['id'];
-
-    if (this.idOwner) {
-      this.peticion.listarPets(this.idOwner).subscribe({
-        next: (data) => {
-          this.pets = data;
-        },
-        error: (error) => {
-          console.error('Error al cargar las mascotas', error);
-        },
-      });
-    } else {
-      console.log('No se ha recibido nada como parámetro');
-    }
-  }
-
-  irAPetEdit(idPet: number) {
-    this.ruta.navigate(['pet-add', this.idOwner, idPet]);
-  }
+  constructor() {}
 }
