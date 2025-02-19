@@ -4,6 +4,7 @@ import { FormOwnerComponent } from './components/form-owner/form-owner.component
 import { DetailOwnerComponent } from './components/detail-owner/detail-owner.component';
 import { PetAddComponent } from './components/pet-add/pet-add.component';
 import { PettypeListComponent } from './components/pettype-list/pettype-list.component';
+import { VisitAddComponent } from './components/visit-add/visit-add.component';
 
 export const routes: Routes = [
   {
@@ -29,5 +30,9 @@ export const routes: Routes = [
   {
     path: 'pettypes',
     component: PettypeListComponent,
+  },
+  {
+    path: 'visit-add/:idPet',
+    component: VisitAddComponent,
   },
 ];

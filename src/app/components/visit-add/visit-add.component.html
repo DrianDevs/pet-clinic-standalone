@@ -1,1 +1,80 @@
-<p>visit-add works!</p>
+<h2>Pet :</h2>
+<table class="table table-dark table-striped">
+  <tr>
+    <td valign="top">
+      <dl class="dl-horizontal">
+        <dt>ID:</dt>
+        <dd>{{ pet.id }}</dd>
+        <dt>Nombre:</dt>
+        <dd>{{ pet.name }}</dd>
+        <dt>Fecha de nacimiento:</dt>
+        <dd>{{ pet.birthDate | date }}</dd>
+        <dt>Type:</dt>
+        <dd>{{ pet.type.name }}</dd>
+      </dl>
+    </td>
+  </tr>
+</table>
+
+<!-- <h1>{{ textoBoton }} visita</h1>
+<div class="container container-fluid">
+  <form #visitForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label>Fecha de visita:</label>
+      <input
+        type="date"
+        class="form-control"
+        required
+        [(ngModel)]="visit.date"
+        name="date"
+        #date="ngModel"
+      />
+      <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
+        Introduce una fecha de visita válida
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Descripción:</label>
+      <input
+        type="text"
+        class="form-control"
+        required
+        [(ngModel)]="visit.description"
+        name="description"
+        #description="ngModel"
+      />
+      <div
+        [hidden]="description.valid || description.pristine"
+        class="alert alert-danger"
+      >
+        Introduce una descripción válida
+      </div>
+    </div>
+    <div class="mb-3">
+      <label>Pet ID:</label>
+      <input
+        type="number"
+        class="form-control"
+        required
+        [(ngModel)]="visit.petId"
+        name="petId"
+        #petId="ngModel"
+      />
+      <div [hidden]="petId.valid || petId.pristine" class="alert alert-danger">
+        Introduce un ID de mascota válido
+      </div>
+    </div>
+    <div class="d-flex justify-content-start gap-2">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!visitForm.valid"
+      >
+        {{ textoBoton }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="irAtras()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div> -->

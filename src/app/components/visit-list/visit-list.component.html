@@ -1,1 +1,23 @@
-<p>visit-list works!</p>
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Visit Date</th>
+      <th scope="col">Description</th>
+      <th scope="col" colspan="2">Actions</th>
+    </tr>
+  </thead>
+  @for(visit of this.visits;track $index){
+  <tbody>
+    <tr>
+      <td>{{ visit.visitDate }}</td>
+      <td>{{ visit.description }}</td>
+      <td>
+        <a>Edit Visit</a>
+      </td>
+      <td>
+        <a>Delete Visit</a>
+      </td>
+    </tr>
+  </tbody>
+  }
+</table>

@@ -11,22 +11,32 @@
           <dd>{{ pet.birthDate | date }}</dd>
           <dt>Type:</dt>
           <dd>{{ pet.typeName }}</dd>
+          <a
+            routerLink="/pet-add/{{ pet.ownerId }}/{{ pet.id }}"
+            routerLinkActive="active"
+          >
+            <button type="button" class="btn btn-warning col-1">
+              Editar
+            </button></a
+          >
+          <button type="button" class="btn btn-danger col-1" disabled>
+            Eliminar
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-success col-1"
+            routerLink="/visit-add/{{ pet.id }}"
+          >
+            Add visit
+          </button>
         </dl>
+      </td>
+      <td valign="top">
+        @if(pet.visits && pet.visits.length > 0){
+        <app-visit-list [visits]="pet.visits"></app-visit-list>
+        }
       </td>
     </tr>
   </table>
-</div>
-
-<div class="form-group">
-  <a
-    routerLink="/pet-add/{{ pet.ownerId }}/{{ pet.id }}"
-    routerLinkActive="active"
-  >
-    <button type="button" class="btn btn-warning col-1">Editar</button></a
-  >
-  <button type="button" class="btn btn-danger col-1" disabled>Eliminar</button>
-
-  <button type="button" class="btn btn-success col-1" disabled>
-    Add visit
-  </button>
 </div>
